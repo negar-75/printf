@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 LIBFT = libft.a
-LIBFTDIR = ./libft
+LIBFTDIR = ./Libft
 SRC = .
 PRINTF_SRC = ft_printf.c ft_print_hex.c ft_pt_un.c functions.c
 OBJS = $(PRINTF_SRC:.c=.o)

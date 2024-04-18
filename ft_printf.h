@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include "libft/libft.h"
+#include "Libft/libft.h"
 
 int print_char(char c);
 int print_number(int num);
