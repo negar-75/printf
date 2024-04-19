@@ -18,7 +18,7 @@ char *ft_utoa(unsigned nbr)
     long unsigned num = nbr;
     int len = un_num_len(num);
     char *arr = malloc((len + 1) * sizeof(char));
-    if (arr == NULL)
+    if (!arr)
         return NULL;
     arr[len] = '\0';
     if (num == 0)

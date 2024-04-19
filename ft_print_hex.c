@@ -30,7 +30,7 @@ char* convert_hex(unsigned long num,char format)
     base  = check_base(format);
     len = len_in_hex(num);
     num_in_hex = (char *)malloc(len + 1 * sizeof(char));
-    if (num_in_hex == NULL)
+    if (!num_in_hex)
         return NULL;
     num_in_hex[len] = '\0';
     len --;

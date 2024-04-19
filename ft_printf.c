@@ -18,31 +18,38 @@ static int get_args(va_list *args, char format)
         return (print_char('%'));
     return 0;
 }
-
-int ft_printf(const char *format, ...)
+static int handle_format(const char *format, va_list *args)
 {
-    va_list args;
-    int i;
-    int len;
+    int len = 0;
+    int i = 0;
+    ssize_t ret;
 
-    len = 0;
-    i = 0;
-    va_start(args, format);
     while (format[i])
     {
         if (format[i] == '%')
         {
-
-            len += get_args(&args, format[i + 1]);
-            i++;
+            ret = get_args(args, format[++i]);
+            if (ret == -1)
+                return -1;
+            len += ret;
         }
+        else if ((ret = write(1, &format[i], 1)) == -1)
+            return -1;
         else
-        {
-            write(1, &format[i], 1);
             len++;
-        }
         i++;
     }
+    return len;
+}
+
+int ft_printf(const char *format, ...)
+{
+    va_list args;
+    int len;
+    
+    len = 0;
+    va_start(args, format);
+    len = handle_format(format,&args);
     va_end(args);
     return len;
 }
