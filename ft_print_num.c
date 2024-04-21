@@ -45,6 +45,8 @@ int	print_pointer(void *ptr)
 	char				*num;
 	int				length;
 
+	if (!ptr)
+		return (print_str("(nil)"));
 	length = 0;
 	address = (unsigned long)(ptr);
 	num = convert_hex(address, 'x');
