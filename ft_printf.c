@@ -46,7 +46,10 @@ int ft_printf(const char *format, ...)
 {
     va_list args;
     int len;
-    
+    if(!format)
+        return (-1);
+    if(format_validation(format) > 0)
+        return (-1);
     len = 0;
     va_start(args, format);
     len = handle_format(format,&args);
