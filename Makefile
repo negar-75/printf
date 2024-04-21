@@ -1,8 +1,8 @@
 NAME = libftprintf.a
 LIBFT = libft.a
-LIBFTDIR = ./Libft
+LIBFTDIR = ./libft
 SRC = .
-PRINTF_SRC = ft_printf.c ft_print_hex.c ft_pt_un.c functions.c
+PRINTF_SRC = ft_printf.c ft_print_str.c ft_print_num.c functions.c ft_convert_unsigned.c ft_convert_hex.c
 OBJS = $(PRINTF_SRC:.c=.o)
 CC = cc 
 AR = ar rcs
@@ -11,13 +11,11 @@ CFLAGS = -Wall -Wextra -Werror
 CP = cp
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(OBJS)
+	$(MAKE) -C $(LIBFTDIR)
 	$(CP) $(LIBFTDIR)/$(LIBFT) $(NAME)
 	$(AR) $(NAME) $(OBJS)
-
-$(LIBFT):
-	$(MAKE) -C $(LIBFTDIR)
-
+	
 %.o: $(SRC)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
