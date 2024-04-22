@@ -1,22 +1,22 @@
 #include "ft_printf.h"
 
-int print_number(int num)
+int	print_number(int num)
 {
 	char	*str_num;
 	int			len;
-    
+
 	str_num = ft_itoa(num);
 	if(!str_num)
 		return (-1);
 	len = print_str(str_num);
 	free(str_num);
-	return len;
+	return (len);
 }
 
-int	print_unsigned(unsigned num)
+int	print_unsigned(unsigned int num)
 {
-	char *str_num;
-	int len;
+	char	*str_num;
+	int		len;
 
 	str_num = ft_utoa(num);
 	if(!str_num)
@@ -32,11 +32,11 @@ int	print_hex(unsigned int num, char format)
 	int			len;
 
 	str_num = convert_hex(num, format);
-	if(!str_num)
+	if (!str_num)
 		return (-1);
 	len = print_str(str_num);
 	free(str_num);
-	return len;
+	return (len);
 }
 
 int	print_pointer(void *ptr)
@@ -55,5 +55,5 @@ int	print_pointer(void *ptr)
 	length += print_str("0x");
 	length += print_str(num);
 	free(num);
-	return length;
+	return (length);
 }
